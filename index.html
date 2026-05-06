@@ -112,7 +112,7 @@ body.lang-ka {
   transition: color .2s;
 }
 .lang-btn.active { color: var(--cyan-400); }
-.lang-btn:hover { color: var(--white); }
+.lang-btn:hover { color: var(--white); cursor: pointer; }
 .lang-divider { color: var(--border); font-size: 12px; }
 
 /* ---- Container ---- */
@@ -232,6 +232,7 @@ body.lang-ka {
   background: var(--cyan-300);
   transform: translateY(-2px);
   box-shadow: 0 12px 32px rgba(34,221,245,.25);
+  cursor: pointer;
 }
 .btn--ghost {
   background: transparent;
@@ -242,6 +243,7 @@ body.lang-ka {
   border-color: var(--cyan-400);
   color: var(--cyan-400);
   transform: translateY(-2px);
+  cursor: pointer;
 }
 .btn--full { width: 100%; }
 
@@ -271,8 +273,9 @@ body.lang-ka {
 .hero {
   position: relative;
   min-height: 100vh;
+  width: 100%;
   display: flex; align-items: center;
-  padding: calc(var(--nav-h) + 40px) 24px 80px;
+  padding: 60px 0 120px;
   overflow: hidden;
 }
 .hero__bg {
@@ -333,8 +336,8 @@ body.lang-ka {
 
 .hero__heading {
   font-family: var(--font-display);
-  font-size: clamp(52px, 9vw, 120px);
-  font-weight: 800; line-height: 1.0;
+  font-size: clamp(38px, 9vw, 120px);
+  font-weight: 800; line-height: 1.2;
   letter-spacing: -.04em;
   margin-bottom: 28px;
 }
@@ -393,7 +396,7 @@ body.lang-ka {
 
 .services__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   background: var(--border);
   border: 1px solid var(--border);
@@ -801,7 +804,7 @@ body.lang-ka {
         <a href="#work" class="btn btn--ghost" data-en="See our work" data-ka="ნამუშევრები">See our work</a>
       </div>
 
-      <div class="hero__stats reveal">
+      <!-- <div class="hero__stats reveal">
         <div class="stat">
           <span class="stat__num" data-target="47">0</span><span class="stat__suffix">+</span>
           <span class="stat__label" data-en="Projects delivered" data-ka="პროექტი">Projects delivered</span>
@@ -814,7 +817,7 @@ body.lang-ka {
           <span class="stat__num" data-target="98">0</span><span class="stat__suffix">%</span>
           <span class="stat__label" data-en="Client satisfaction" data-ka="კმაყოფილება">Client satisfaction</span>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 
@@ -854,15 +857,6 @@ body.lang-ka {
           <p data-en="Clean, fast, and maintainable code — from landing pages to complex web applications." data-ka="სუფთა, სწრაფი კოდი — მარტივი გვერდებიდან რთულ ვებ-აპლიკაციებამდე.">Clean, fast, and maintainable code — from landing pages to complex web applications.</p>
         </div>
 
-        <div class="service-card reveal" style="--delay:.2s">
-          <div class="service-card__num">04</div>
-          <div class="service-card__icon">
-            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="14" r="6" stroke="currentColor" stroke-width="1.8"/><path d="M6 34c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </div>
-          <h3 data-en="Branding" data-ka="ბრენდინგი">Branding</h3>
-          <p data-en="Visual identities that make your brand unforgettable — logo, palette, typography, and beyond." data-ka="ვიზუალური იდენტობა, რომელიც თქვენს ბრენდს დასამახსოვრებელს ხდის.">Visual identities that make your brand unforgettable — logo, palette, typography, and beyond.</p>
-        </div>
-
         <div class="service-card reveal" style="--delay:.25s">
           <div class="service-card__num">05</div>
           <div class="service-card__icon">
@@ -872,14 +866,6 @@ body.lang-ka {
           <p data-en="Organic growth strategies that get your site found by the right people at the right time." data-ka="ორგანული ზრდის სტრატეგია — სწორ ადამიანებამდე სწორ დროს.">Organic growth strategies that get your site found by the right people at the right time.</p>
         </div>
 
-        <div class="service-card reveal" style="--delay:.3s">
-          <div class="service-card__num">06</div>
-          <div class="service-card__icon">
-            <svg viewBox="0 0 40 40" fill="none"><rect x="6" y="8" width="28" height="20" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M14 28l-4 6M26 28l4 6M10 34h20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 18l3 3 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 data-en="E-Commerce" data-ka="ელ-კომერცია">E-Commerce</h3>
-          <p data-en="Online stores optimised for sales, speed, and seamless shopping experiences." data-ka="ონლაინ მაღაზიები, ოპტიმიზებული გაყიდვებისა და სწრაფი შოპინგ-გამოცდილებისთვის.">Online stores optimised for sales, speed, and seamless shopping experiences.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -983,49 +969,7 @@ body.lang-ka {
   </section>
 
   <!-- ===== TESTIMONIALS ===== -->
-  <section class="testimonials">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag" data-en="Kind words" data-ka="კომენტარები">Kind words</span>
-        <h2 data-en="What clients say." data-ka="კლიენტები ამბობენ.">What clients say.</h2>
-      </div>
-      <div class="testimonials__grid">
-        <div class="testimonial reveal">
-          <div class="testimonial__stars">★★★★★</div>
-          <p data-en='"GeoWebStudio transformed our online presence completely. Sales are up 40% since launch."' data-ka='"GeoWebStudio-მ ჩვენი ონლაინ-პრეზენსი მთლიანად შეცვალა. გაყიდვები 40%-ით გაიზარდა."'>"GeoWebStudio transformed our online presence completely. Sales are up 40% since launch."</p>
-          <div class="testimonial__author">
-            <div class="author-avatar">L</div>
-            <div>
-              <strong data-en="Luka Beridze" data-ka="ლუკა ბერიძე">Luka Beridze</strong>
-              <span data-en="Founder, Saqartvelo Goods" data-ka="დამფუძნებელი, საქართველო გუდს">Founder, Saqartvelo Goods</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial reveal" style="--delay:.1s">
-          <div class="testimonial__stars">★★★★★</div>
-          <p data-en='"Professional, fast, and the final result exceeded all our expectations. Highly recommend."' data-ka='"პროფესიონალური, სწრაფი და საბოლოო შედეგი ყველა მოლოდინს გაასცდა. ვურჩევ ყველას."'>"Professional, fast, and the final result exceeded all our expectations. Highly recommend."</p>
-          <div class="testimonial__author">
-            <div class="author-avatar">M</div>
-            <div>
-              <strong data-en="Mariam Kvaratskhelia" data-ka="მარიამ კვარაცხელია">Mariam Kvaratskhelia</strong>
-              <span data-en="CEO, Kavkazia Travel" data-ka="CEO, კავკაზია ტრეველი">CEO, Kavkazia Travel</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial reveal" style="--delay:.2s">
-          <div class="testimonial__stars">★★★★★</div>
-          <p data-en='"The team understood our brand vision from day one. The site is exactly what we needed."' data-ka='"გუნდმა ჩვენი ბრენდ-ვიზია პირველი დღიდანვე გაიგო. საიტი ზუსტად ისეა, როგორც გვჭირდებოდა."'>"The team understood our brand vision from day one. The site is exactly what we needed."</p>
-          <div class="testimonial__author">
-            <div class="author-avatar">D</div>
-            <div>
-              <strong data-en="David Tsiklauri" data-ka="დავით ციკლაური">David Tsiklauri</strong>
-              <span data-en="Partner, TBC Ventures" data-ka="პარტნიორი, TBC ვენჩერსი">Partner, TBC Ventures</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
   <!-- ===== CONTACT ===== -->
   <section class="contact" id="contact">
