@@ -122,6 +122,7 @@ nav { flex: 1; padding: 14px 10px; }
 .user-name { font-size: 13px; font-weight: 500; }
 .user-role { font-size: 10px; color: var(--white-dim); }
 
+/* Main */
 #main { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
 
 #topbar {
@@ -243,7 +244,7 @@ nav { flex: 1; padding: 14px 10px; }
 .post-title { font-weight: 500; color: var(--white); }
 .post-cat { font-size: 11px; color: rgba(240,246,255,.3); margin-top: 2px; }
 
-
+/* Badges */
 .badge {
   display: inline-flex; align-items: center; gap: 5px;
   font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px;
@@ -333,9 +334,139 @@ select option { background: var(--navy-800); }
 }
 .save-btn:hover { background: var(--cyan-400); }
 .save-btn i { font-size: 15px; }
+
+/* ===== LOGIN SCREEN ===== */
+#login-screen {
+  position: fixed; inset: 0; z-index: 999;
+  background: var(--navy-950);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+#login-screen.hidden { display: none; }
+
+.login-box {
+  width: 100%; max-width: 400px;
+  background: var(--navy-900);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px 36px;
+  display: flex; flex-direction: column; gap: 24px;
+}
+.login-logo {
+  display: flex; align-items: center; gap: 12px;
+}
+.login-logo .logo-mark {
+  width: 40px; height: 40px; border-radius: 11px;
+  background: linear-gradient(135deg, var(--cyan-500), var(--cyan-300));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 16px;
+  color: var(--navy-900);
+}
+.login-logo-text { display: flex; flex-direction: column; gap: 2px; }
+.login-logo-text strong {
+  font-family: var(--font-display); font-size: 14px; font-weight: 800; letter-spacing: .04em;
+}
+.login-logo-text strong span { color: var(--cyan-400); }
+.login-logo-text small { font-size: 10px; color: var(--white-dim); text-transform: uppercase; letter-spacing: .08em; }
+
+.login-heading { display: flex; flex-direction: column; gap: 6px; }
+.login-heading h1 { font-family: var(--font-display); font-size: 22px; font-weight: 700; }
+.login-heading p { font-size: 13px; color: var(--white-dim); }
+
+.login-field { display: flex; flex-direction: column; gap: 8px; }
+.login-field label {
+  font-size: 11px; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: rgba(34,221,245,.6);
+}
+.login-input-wrap { position: relative; }
+.login-input-wrap input {
+  width: 100%; padding: 11px 42px 11px 14px;
+  font-size: 14px;
+}
+.login-eye {
+  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer;
+  color: var(--white-dim); font-size: 17px;
+  display: flex; align-items: center;
+  transition: color .15s;
+}
+.login-eye:hover { color: var(--cyan-400); }
+
+.login-row {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.login-remember {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--white-dim); cursor: pointer; user-select: none;
+}
+.login-remember input[type=checkbox] {
+  width: 15px; height: 15px; padding: 0;
+  accent-color: var(--cyan-500);
+  border-radius: 4px;
+}
+
+.login-btn {
+  width: 100%; padding: 13px;
+  background: var(--cyan-500); color: var(--navy-900);
+  border: none; border-radius: 10px;
+  font-family: var(--font-display); font-size: 14px; font-weight: 700;
+  cursor: pointer; letter-spacing: .04em;
+  transition: background .18s, transform .15s, box-shadow .18s;
+}
+.login-btn:hover {
+  background: var(--cyan-400);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(34,221,245,.2);
+}
+.login-btn:active { transform: translateY(0); }
+
+.login-error {
+  display: none; align-items: center; gap: 8px;
+  background: rgba(240,80,80,.1); border: 1px solid rgba(240,80,80,.25);
+  border-radius: 9px; padding: 10px 14px;
+  font-size: 12px; color: #f09595;
+}
+.login-error.show { display: flex; }
+.login-error i { font-size: 15px; flex-shrink: 0; }
 </style>
 </head>
 <body>
+
+<!-- ===== LOGIN SCREEN ===== -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">
+      <div class="logo-mark">G</div>
+      <div class="login-logo-text">
+        <strong>GEO<span>WEB</span>STUDIO</strong>
+        <small>Admin panel</small>
+      </div>
+    </div>
+    <div class="login-heading">
+      <h1>Welcome back</h1>
+      <p>Enter your password to access the admin panel.</p>
+    </div>
+    <div class="login-field">
+      <label for="login-pass">Password</label>
+      <div class="login-input-wrap">
+        <input type="password" id="login-pass" placeholder="Enter password…" autocomplete="current-password" />
+        <button class="login-eye" id="toggle-eye" type="button" tabindex="-1" title="Show / hide password">
+          <i class="ti ti-eye" id="eye-icon"></i>
+        </button>
+      </div>
+    </div>
+    <div class="login-error" id="login-error">
+      <i class="ti ti-alert-circle"></i>
+      <span>Incorrect password. Please try again.</span>
+    </div>
+    <div class="login-row">
+      <label class="login-remember">
+        <input type="checkbox" id="remember-me"> Remember me for 7 days
+      </label>
+    </div>
+    <button class="login-btn" id="login-btn">Sign in</button>
+  </div>
+</div>
 
 <div id="app">
 
@@ -373,6 +504,9 @@ select option { background: var(--navy-800); }
           <div class="user-role">GeoWebStudio</div>
         </div>
         <i class="ti ti-chevron-down" style="font-size:13px;color:var(--white-dim);margin-left:auto"></i>
+      </div>
+      <div class="nav-item" id="logout-btn" style="margin-top:6px;color:#f09595">
+        <i class="ti ti-logout"></i> Log out
       </div>
     </div>
   </div>
@@ -524,6 +658,80 @@ select option { background: var(--navy-800); }
 
 <script>
 'use strict';
+
+/* ============================================================
+   LOGIN GATE
+   Change ADMIN_PASSWORD to whatever you want.
+   ============================================================ */
+const ADMIN_PASSWORD = 'geowebstudio2025';
+const SESSION_KEY    = 'gws_admin_auth';
+const REMEMBER_KEY   = 'gws_admin_remember';
+const REMEMBER_DAYS  = 7;
+
+function isAuthenticated() {
+  // Check sessionStorage (tab session)
+  if (sessionStorage.getItem(SESSION_KEY) === '1') return true;
+  // Check localStorage (remember me)
+  const exp = localStorage.getItem(REMEMBER_KEY);
+  if (exp && Date.now() < parseInt(exp, 10)) return true;
+  return false;
+}
+
+function login(remember) {
+  sessionStorage.setItem(SESSION_KEY, '1');
+  if (remember) {
+    localStorage.setItem(REMEMBER_KEY, Date.now() + REMEMBER_DAYS * 864e5);
+  }
+  document.getElementById('login-screen').classList.add('hidden');
+}
+
+function logout() {
+  sessionStorage.removeItem(SESSION_KEY);
+  localStorage.removeItem(REMEMBER_KEY);
+  document.getElementById('login-screen').classList.remove('hidden');
+  document.getElementById('login-pass').value = '';
+  document.getElementById('login-error').classList.remove('show');
+}
+
+// Init — show or hide login screen
+if (isAuthenticated()) {
+  document.getElementById('login-screen').classList.add('hidden');
+}
+
+// Sign-in button
+document.getElementById('login-btn').addEventListener('click', () => {
+  const val = document.getElementById('login-pass').value;
+  const err = document.getElementById('login-error');
+  if (val === ADMIN_PASSWORD) {
+    err.classList.remove('show');
+    login(document.getElementById('remember-me').checked);
+  } else {
+    err.classList.add('show');
+    document.getElementById('login-pass').value = '';
+    document.getElementById('login-pass').focus();
+  }
+});
+
+// Allow pressing Enter in password field
+document.getElementById('login-pass').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('login-btn').click();
+});
+
+// Show/hide password toggle
+document.getElementById('toggle-eye').addEventListener('click', () => {
+  const inp  = document.getElementById('login-pass');
+  const icon = document.getElementById('eye-icon');
+  if (inp.type === 'password') {
+    inp.type = 'text';
+    icon.className = 'ti ti-eye-off';
+  } else {
+    inp.type = 'password';
+    icon.className = 'ti ti-eye';
+  }
+});
+
+// Logout
+document.getElementById('logout-btn').addEventListener('click', logout);
 
 const posts = [
   {title:"How to scale your startup",    cat:"Business",    date:"May 1, 2026",  views:8241, status:"published"},
