@@ -409,9 +409,21 @@ body.lang-ka {
   padding: 40px 32px;
   position: relative;
   transition: background .3s;
-  display: flex; flex-direction: column; gap: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  min-height: 340px;
 }
-.service-card:hover { background: var(--navy-800); }
+
+.service-card:hover {
+  background: var(--navy-800);
+}
 
 .service-card__num {
   font-family: var(--font-display);
@@ -429,6 +441,15 @@ body.lang-ka {
 }
 .service-card p { font-size: 14px; color: var(--white-dim); line-height: 1.6; }
 
+.service-card h3 {
+  margin-top: 18px;
+}
+
+.service-card p {
+  max-width: 520px;
+  margin-top: 12px;
+}
+
 /* Hover line accent */
 .service-card::after {
   content: '';
@@ -438,6 +459,11 @@ body.lang-ka {
   transform: scaleX(0); transform-origin: left;
   transition: transform .35s var(--ease-out);
 }
+
+.service-card:nth-child(3) {
+  grid-column: span 2;
+}
+
 .service-card:hover::after { transform: scaleX(1); }
 
 @media (max-width: 900px) {
@@ -445,6 +471,13 @@ body.lang-ka {
 }
 @media (max-width: 560px) {
   .services__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+
+  .service-card:nth-child(3) {
+    grid-column: span 1;
+  }
+
 }
 
 /* ===== WORK ===== */
@@ -793,7 +826,7 @@ body.lang-ka {
 
       <h1 class="hero__heading reveal">
         <span class="line" data-en="We build" data-ka="გახადე შენი ბიზნესი">We build</span>
-        <span class="line accent-line" data-en="digital" data-ka="წარმატებული">digital</span>
+        <span class="line accent-line" data-en="digital" data-ka="წარმატებული,">digital</span>
         <span class="line" data-en="experiences." data-ka="ციფრულ ეპოქაში.">experiences.</span>
       </h1>
 
@@ -826,7 +859,7 @@ body.lang-ka {
     <div class="container">
       <div class="section-header reveal">
         <span class="section-tag" data-en="What we do" data-ka="რას ვაკეთებთ">What we do</span>
-        <h2 data-en="Services built<br>for results." data-ka="სერვისები<br>შედეგებზე.">Services built<br>for results.</h2>
+        <h2 data-en="Our<br>Services" data-ka="ჩვენი<br>სერვისები">Our<br>Services</h2>
       </div>
 
       <div class="services__grid">
@@ -835,8 +868,8 @@ body.lang-ka {
           <div class="service-card__icon">
             <svg viewBox="0 0 40 40" fill="none"><rect x="4" y="6" width="32" height="24" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M4 12h32" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="9" r="1.5" fill="currentColor"/><circle cx="14" cy="9" r="1.5" fill="currentColor"/><path d="M14 34h12M20 30v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </div>
-          <h3 data-en="Web Design" data-ka="ვებ-დიზაინი">Web Design</h3>
-          <p data-en="Pixel-perfect designs crafted to impress and convert visitors into loyal customers." data-ka="ვიზუალურად შთამბეჭდავი დიზაინი, რომელიც მომხმარებელს მყიდველად აქცევს.">Pixel-perfect designs crafted to impress and convert visitors into loyal customers.</p>
+          <h3 data-en="Package 01 - 300GEL" data-ka="პაკეტი 01 - 300GEL">01</h3>
+          <p data-en="Frontend Website + 1 month of technical support for free" data-ka="Frontend ვებსაიტის აწყობა + 1 თვიანი უფასო საიტის მხარდაჭერა">Frontend Website + 1 month website's technical support for free</p>
         </div>
 
         <div class="service-card reveal" style="--delay:.1s">
@@ -844,26 +877,17 @@ body.lang-ka {
           <div class="service-card__icon">
             <svg viewBox="0 0 40 40" fill="none"><path d="M8 26l8-16 5 10 4-6 7 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="31" cy="10" r="4" stroke="currentColor" stroke-width="1.8"/></svg>
           </div>
-          <h3 data-en="UI / UX Design" data-ka="UI/UX დიზაინი">UI / UX Design</h3>
-          <p data-en="User-centred interfaces that feel intuitive, delightful, and effortlessly usable on every device." data-ka="მომხმარებელზე ორიენტირებული ინტერფეისები — ინტუიციური და სასიამოვნო.">User-centred interfaces that feel intuitive, delightful, and effortlessly usable on every device.</p>
-        </div>
-
-        <div class="service-card reveal" style="--delay:.15s">
-          <div class="service-card__num">03</div>
-          <div class="service-card__icon">
-            <svg viewBox="0 0 40 40" fill="none"><path d="M12 16l-6 4 6 4M28 16l6 4-6 4M22 10l-4 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 data-en="Development" data-ka="დეველოპმენტი">Development</h3>
-          <p data-en="Clean, fast, and maintainable code — from landing pages to complex web applications." data-ka="სუფთა, სწრაფი კოდი — მარტივი გვერდებიდან რთულ ვებ-აპლიკაციებამდე.">Clean, fast, and maintainable code — from landing pages to complex web applications.</p>
+          <h3 data-en="Package 02 - 450GEL" data-ka="პაკეტი 02 - 450GEL">02</h3>
+          <p data-en="Frontend Website + 2 month of technical support for free and Basic SEO" data-ka="Frontend ვებსაიტი + 2 თვიანი უფასო საიტის მხარდაჭერა და Basic SEO (საიტის Google-ში უფრო მაღლა გამოჩენა.)">Frontend Website + 2 month of website's technical support for free and Basic SEO</p>
         </div>
 
         <div class="service-card reveal" style="--delay:.25s">
-          <div class="service-card__num">05</div>
+          <div class="service-card__num">03</div>
           <div class="service-card__icon">
             <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.8"/><path d="M20 6c0 0-6 5-6 14s6 14 6 14M20 6c0 0 6 5 6 14s-6 14-6 14M6 20h28" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </div>
-          <h3 data-en="SEO" data-ka="SEO ოპტიმიზაცია">SEO</h3>
-          <p data-en="Organic growth strategies that get your site found by the right people at the right time." data-ka="ორგანული ზრდის სტრატეგია — სწორ ადამიანებამდე სწორ დროს.">Organic growth strategies that get your site found by the right people at the right time.</p>
+          <h3 data-en="Package 03 - 600GEL" data-ka="პაკეტი 03 - 600GEL">03</h3>
+          <p data-en="Frontend Website + 3 month of technical support for free with direct contact through the website function, Basic SEO and 1 year domain for free" data-ka="Frontend ვებსაიტი + 3 თვე ტექნიკური მხარდაჭერა უფასოდ, საიტიდან პირდაპირი კონტაქტის ფუნქცია, Basic SEO და 1 წლიანი Domain უფასოდ">rontend Website + 3 month of technical support for free with direct contact through the website function and Basic SEO</p>
         </div>
 
       </div>
